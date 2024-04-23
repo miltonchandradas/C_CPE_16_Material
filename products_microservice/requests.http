@@ -1,0 +1,22 @@
+### GET welcome message
+GET http://localhost:3000
+
+### GET list of products
+GET http://localhost:3000/v1/products
+
+### GET single product
+GET http://localhost:3000/v1/products/3
+
+### POST add a product
+POST http://localhost:3000/v1/products
+Content-Type: application/json
+
+{
+    "id": 5,
+    "ProductName": "Bread",
+    "Quantity": 1,
+    "ExtendedPrice": 2.71,
+    "ShipperName": "Fun Inc.",
+    "ShippedDate": "2015-01-27T00:00:00",
+    "Status": "A"
+}

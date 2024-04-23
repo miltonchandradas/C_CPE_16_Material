@@ -1,0 +1,15 @@
+{
+  "name": "products",
+  "version": "1.0.0",
+  "description": "Products Microservice - Express",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server"
+  },
+  "author": "Milton Chandradas",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.3"
+  }
+}

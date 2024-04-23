@@ -1,0 +1,101 @@
+apiVersion: serverless.kyma-project.io/v1alpha2
+kind: Function
+metadata:
+  creationTimestamp: '2024-03-15T15:40:21Z'
+  generation: 1
+  labels:
+    app.kubernetes.io/name: helloworld
+  managedFields:
+    - apiVersion: serverless.kyma-project.io/v1alpha2
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:labels:
+            .: {}
+            f:app.kubernetes.io/name: {}
+        f:spec:
+          .: {}
+          f:replicas: {}
+          f:resourceConfiguration:
+            .: {}
+            f:function:
+              .: {}
+              f:profile: {}
+          f:runtime: {}
+          f:source:
+            .: {}
+            f:inline:
+              .: {}
+              f:source: {}
+      manager: Mozilla
+      operation: Update
+      time: '2024-03-15T15:40:21Z'
+    - apiVersion: serverless.kyma-project.io/v1alpha2
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:status:
+          .: {}
+          f:buildResourceProfile: {}
+          f:conditions: {}
+          f:functionResourceProfile: {}
+          f:podSelector: {}
+          f:replicas: {}
+          f:runtime: {}
+          f:runtimeImage: {}
+      manager: manager
+      operation: Update
+      subresource: status
+      time: '2024-03-16T06:21:13Z'
+  name: helloworld
+  namespace: default
+  resourceVersion: '7399780'
+  uid: 71a5c97b-2398-48db-b13a-11a2fc18fef7
+spec:
+  replicas: 1
+  resourceConfiguration:
+    function:
+      profile: XS
+  runtime: nodejs18
+  source:
+    inline:
+      source: |-
+        module.exports = {
+          main: async function (event, context) {
+            var queryParams = event['extensions']['request']['query'];
+
+            //read query param, for example `?greeting=Hi`
+            var greetingMsg = queryParams['greeting']; 
+            if(!greetingMsg) {
+              greetingMsg = 'Hello world';
+            } 
+            const message = greetingMsg
+              + ` from the Kyma Function ${context['function-name']}`
+              + ` running on ${context.runtime}!`;
+            console.log(message);
+            return message;
+          }
+        }
+status:
+  buildResourceProfile: fast
+  conditions:
+    - lastTransitionTime: '2024-03-16T06:21:13Z'
+      message: Deployment helloworld-jqm4g is ready
+      reason: DeploymentReady
+      status: 'True'
+      type: Running
+    - lastTransitionTime: '2024-03-15T15:40:42Z'
+      message: Job helloworld-build-tzdsr finished
+      reason: JobFinished
+      status: 'True'
+      type: BuildReady
+    - lastTransitionTime: '2024-03-15T15:40:21Z'
+      message: ConfigMap helloworld-2zg6t created
+      reason: ConfigMapCreated
+      status: 'True'
+      type: ConfigurationReady
+  functionResourceProfile: XS
+  podSelector: >-
+    serverless.kyma-project.io/function-name=helloworld,serverless.kyma-project.io/managed-by=function-controller,serverless.kyma-project.io/resource=deployment,serverless.kyma-project.io/uuid=71a5c97b-2398-48db-b13a-11a2fc18fef7
+  replicas: 1
+  runtime: nodejs18
+  runtimeImage: europe-docker.pkg.dev/kyma-project/prod/function-runtime-nodejs18:1.3.1

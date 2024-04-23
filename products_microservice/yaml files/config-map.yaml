@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-config
+data:
+    my-key: "my-value"
+    my-other-key: "my-other-value"
+
+    # You can also use file-like key-value pairs
+    my-file-like-key: |
+        # This "file" contains a bash script
+        /bin/bash
+        echo "Hello World"
+    my-other-file-like-key: |
+        # This "file" contains a JSON object
+        {
+            "key": "value"
+        }

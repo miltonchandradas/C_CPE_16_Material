@@ -1,0 +1,86 @@
+apiVersion: gateway.kyma-project.io/v1beta1
+kind: APIRule
+metadata:
+  creationTimestamp: '2024-03-15T15:44:01Z'
+  finalizers:
+    - gateway.kyma-project.io/subresources
+  generation: 1
+  labels:
+    app.kubernetes.io/name: helloworld-rule
+  managedFields:
+    - apiVersion: gateway.kyma-project.io/v1beta1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:labels:
+            .: {}
+            f:app.kubernetes.io/name: {}
+        f:spec:
+          .: {}
+          f:gateway: {}
+          f:host: {}
+          f:rules: {}
+          f:service:
+            .: {}
+            f:name: {}
+            f:port: {}
+          f:timeout: {}
+      manager: Mozilla
+      operation: Update
+      time: '2024-03-15T15:44:01Z'
+    - apiVersion: gateway.kyma-project.io/v1beta1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:finalizers:
+            .: {}
+            v:"gateway.kyma-project.io/subresources": {}
+      manager: manager
+      operation: Update
+      time: '2024-03-15T15:44:02Z'
+    - apiVersion: gateway.kyma-project.io/v1beta1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:status:
+          .: {}
+          f:APIRuleStatus:
+            .: {}
+            f:code: {}
+          f:accessRuleStatus:
+            .: {}
+            f:code: {}
+          f:lastProcessedTime: {}
+          f:observedGeneration: {}
+          f:virtualServiceStatus:
+            .: {}
+            f:code: {}
+      manager: manager
+      operation: Update
+      subresource: status
+      time: '2024-03-16T05:34:39Z'
+  name: helloworld-rule
+  namespace: default
+  resourceVersion: '7377213'
+  uid: 067fd14b-be5e-41e1-bf84-7906e649863d
+spec:
+  gateway: kyma-gateway.kyma-system.svc.cluster.local
+  host: helloworld-host.c-735bc45.kyma.ondemand.com
+  rules:
+    - accessStrategies:
+        - handler: no_auth
+      methods:
+        - GET
+      path: /.*
+  service:
+    name: helloworld
+    port: 80
+  timeout: 60
+status:
+  APIRuleStatus:
+    code: OK
+  accessRuleStatus:
+    code: OK
+  lastProcessedTime: '2024-03-16T05:34:39Z'
+  observedGeneration: 1
+  virtualServiceStatus:
+    code: OK
